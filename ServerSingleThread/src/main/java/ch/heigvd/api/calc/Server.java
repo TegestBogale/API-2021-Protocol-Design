@@ -32,6 +32,7 @@ public class Server {
          *  The receptionist just creates a server socket and accepts new client connections.
          *  For a new client connection, the actual work is done by the handleClient method below.
          */
+        // My Add ! //
         ServerSocket serverSocket;
         Socket clientSocket = null;
         try {
@@ -76,6 +77,7 @@ public class Server {
          *     - Handle the message
          *     - Send to result to the client
          */
+        // My Add!
         BufferedReader in = null;
         BufferedWriter out = null;
         String line;
