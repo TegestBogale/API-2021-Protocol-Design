@@ -49,9 +49,15 @@ public class Client {
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             stdin = new BufferedReader(new InputStreamReader(System.in));
 
-            String userInput;
-            while((userInput = stdin.readLine()).equals("QUIT CRLF")){
-                out.write(userInput);
+            String init;
+            while((init = in.readLine()) != null)
+                System.out.println(init);
+
+            String userInput = null;
+            // System.out.println(userInput);
+            while(true){
+                userInput = stdin.readLine();
+                out.write(userInput + "\n");
                 out.flush();
                 LOG.log(Level.INFO, "*** Response sent by the server: ***");
                 String response;
