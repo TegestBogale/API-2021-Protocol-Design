@@ -45,6 +45,7 @@ public class Server {
             try {
                 LOG.log(Level.INFO, "Single-threaded: Waiting for a new client on port {0}",3013);// a revoir cette ligne
                 clientSocket = serverSocket.accept();
+                handleClient(clientSocket);
             } catch (IOException ex1) {
               if(clientSocket != null){
                   try {
@@ -55,7 +56,7 @@ public class Server {
 
               }
             }
-             handleClient(clientSocket);
+
         }
 
 
