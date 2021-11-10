@@ -43,7 +43,7 @@ public class Server {
         }
         while (true) {
             try {
-                LOG.log(Level.INFO, "Single-threaded: Waiting for a new client on port {0}",80);// a revoir cette ligne
+                LOG.log(Level.INFO, "Single-threaded: Waiting for a new client on port {0}",3013);// a revoir cette ligne
                 clientSocket = serverSocket.accept();
             } catch (IOException ex1) {
               if(clientSocket != null){
@@ -55,7 +55,7 @@ public class Server {
 
               }
             }
-            handleClient(clientSocket);
+             handleClient(clientSocket);
         }
 
 
@@ -89,6 +89,7 @@ public class Server {
             out.flush();
             LOG.info("Reading until client sends QUIT CRLF or closes the connection...");
             while ( (line = in.readLine()) != null ) {
+
                 if (line.equalsIgnoreCase("QUIT CRLF")) {
                     break;
                 }
