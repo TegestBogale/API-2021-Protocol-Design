@@ -1,26 +1,20 @@
 package ch.heigvd.api.calc;
 
 import java.io.*;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Calculator client implementation
+/* Calculator client implementation
+
  */
 public class Client {
 
     private static final Logger LOG = Logger.getLogger(Client.class.getName());
 
-    /**
-     * Main function to run client
+    /* Main function to run client
      *
-     * @param args no args required
+             * @param args no args required
      */
     public static void main(String[] args) {
 
@@ -44,7 +38,7 @@ public class Client {
          */
 
         try {
-            clientSocket = new Socket("127.0.0.1", 1111);
+            clientSocket = new Socket("127.0.0.1", 3013);
             out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             stdin = new BufferedReader(new InputStreamReader(System.in));
@@ -61,7 +55,8 @@ public class Client {
                 out.flush();
                 LOG.log(Level.INFO, "*** Response sent by the server: ***");
                 String response;
-                while ((response = in.readLine()) != null) {
+                if((response = in.readLine()) != null) {
+                    System.out.println(response);
                     LOG.log(Level.INFO, response);
                 }
             }
